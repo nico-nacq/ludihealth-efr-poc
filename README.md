@@ -5,6 +5,13 @@ A two days project made during LudiHealth first edition. This is a proof of conc
 
 ## Screenshots
 
+![Screenshot of the game](screenshots/screenshot-1.jpg)
+
+![Screenshot of the game](screenshots/screenshot-2.jpg)
+
+![Animated screenshot of the game](screenshots/screenshot-3.gif)
+
+
 ## Getting started
 
 The project is devided in three parts : 
