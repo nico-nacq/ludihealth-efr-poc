@@ -1,0 +1,377 @@
+#stats {
+
+    border: 1px solid #FFF;
+    padding: 10px;
+    position: fixed;
+    color: #FFF;
+    z-index: 99;
+    font-family: Arial;
+    width: 300px;
+    bottom: 0px;
+
+}
+
+#stats a {
+    color: #FFF;
+}
+
+#game {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+
+}
+
+#bg1 {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url(assets/bg1.jpg);
+    background-size: 100% auto;
+    animation-timing-function: linear;
+    animation-name: bg_scroll;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bg_scroll {
+    0% {
+        background-position: 0vw 0%;
+    }
+
+    100% {
+        background-position: -100vw 0%;
+    }
+
+}
+
+#bg2 {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: url(assets/bg2.png);
+    background-size: 100% auto;
+    animation-timing-function: linear;
+    animation-name: bg_scroll;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+#player {
+    /*! background: #FFF; */
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0%;
+    left: 32%;
+    /*! border-top-left-radius: 100px; */
+    /*! border-top-right-radius: 100px; */
+    animation-timing-function: linear;
+    animation-name: spaceship;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+
+    background-image: url(assets/sprites/trompovni.png);
+    /*! background: none; */
+    background-size: 100% auto;
+    /*! filter: drop-shadow(0px 3px 31px rgba(195,175,235,0.8)); */
+    filter: brightness(0.7);
+}
+
+#player.active {
+    animation-duration: .9s;
+    /*! outline: 5px solid #006699; */
+    filter: brightness(0.7) drop-shadow(0px 3px 10px rgba(195, 175, 235, 0.8));
+}
+
+#player.activepositive {
+    /*! outline-color: #009966; */
+    /*! filter: brightness(1.2); */
+    filter: brightness(0.7) drop-shadow(0px 3px 10px rgba(175, 255, 235, 0.8));
+}
+
+#player2 {
+    /*! background: #FFF; */
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(40% + 130px);
+    left: calc(32% + 85px);
+    /*! border-top-left-radius: 100px; */
+    /*! border-top-right-radius: 100px; */
+    animation-timing-function: ease-in-out;
+    animation-name: player;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    transition: all .3s linear;
+
+    background-image: url(assets/sprites/saxonaute.png);
+    background-size: 100% auto;
+    filter: drop-shadow(0px 3px 10px rgba(195, 175, 235, 0.8));
+}
+
+
+@keyframes player {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    40% {
+        transform: rotate(-10deg)
+    }
+
+    70% {
+        transform: rotate(5deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+
+
+@keyframes spaceship {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    5% {
+        transform: rotate(1deg)
+    }
+
+    30% {
+        transform: rotate(-2deg)
+    }
+
+    40% {
+        transform: rotate(2deg)
+    }
+
+    60% {
+        transform: rotate(0deg)
+    }
+
+    65% {
+        transform: rotate(0deg)
+    }
+
+    80% {
+        transform: rotate(1deg)
+    }
+
+    90% {
+        transform: rotate(-2deg)
+    }
+
+    95% {
+        transform: rotate(2deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+
+}
+
+
+.collectible {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+
+    border-radius: 30px;
+
+    outline: 10px solid rgba(255, 255, 255, 0.3);
+    background: #FFF;
+    animation-timing-function: ease-out;
+    animation-name: collectible;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    top: 50%;
+    left: 50%;
+    margin-left: 60vw;
+    transition: margin-left 5s linear, opacity 6s ease-out;
+}
+
+
+
+
+@keyframes collectible {
+    0% {
+        outline: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    100% {
+        outline: 10px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+
+#game, #stats {
+    display: none;
+
+}
+
+body {
+    background: url(assets/bg1.jpg);
+    background-size: 100% auto;
+}
+
+.game-started>#game,
+.game-started>#stats {
+    display: block;
+}
+
+.game-started>#splashscreen {
+    display: none;
+}
+
+audio {
+    display: none;
+}
+
+#splashscreen {
+    width: 100%;
+    text-align: center;
+    margin-top: calc(50vh - 30px);
+}
+
+#splashscreen button:nth-child(1) {
+    padding: 40px;
+    background-color: #FFF;
+    color: #0C0D34;
+    border-radius: 50px;
+    border: none;
+    font-size: 20px;
+
+
+}
+
+#splashscreen button:nth-child(4) {
+    background: none;
+    color: #FFF;
+    border: none;
+    margin-top: 50px;
+}
+
+#startGameBtn.waiting {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.8;
+
+}
+
+#waitingLabel {
+    display: none;
+}
+
+#startGameBtn.waiting+#waitingLabel {
+    display: block;
+    color: #FFF;
+    margin-top: 10px;
+    font-family: Arial;
+}
+
+#startGameBtn.waiting:after {
+
+    content: " ";
+    display: inline-block;
+    border: 3px solid #000;
+    border-bottom: 3px solid #FFF;
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+    border-radius: 30px;
+    position: relative;
+    top: 13px;
+    margin-top: -30px;
+    animation: infinite-rotate 2s linear infinite;
+
+
+}
+
+@keyframes infinite-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+#player>span {
+    display: inline-block;
+    width: 100px;
+    height: 1px;
+
+    position: absolute;
+    left: 150px;
+    top: 330px;
+    transition: all .3s ease-in-out;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 14%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+
+}
+
+#player>span:nth-child(2) {
+
+
+
+    background: url(assets/bg2.png);
+    background-size: 2000% 1000%;
+
+
+    animation: beamnegative 4s linear infinite;
+}
+
+@keyframes beamnegative {
+    0% {
+        background-position: 50% 50%;
+    }
+
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
+#player.activepositive>span:nth-child(2) {
+
+
+
+    animation: beam 4s linear infinite;
+}
+
+@keyframes beam {
+    0% {
+        background-position: 50% 50%;
+    }
+
+    100% {
+        background-position: 50% 0%;
+    }
+}
+
+#player.active>span {
+    opacity: 1;
+    height: 500px;
+}
+
+#splashscreen a {
+    color: #FFF;
+    text-decoration: none;
+    font-family: Arial;
+
+    font-size: 13px;
+
+}
