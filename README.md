@@ -11,6 +11,8 @@ A two days project made during LudiHealth first edition. This is a proof of conc
 
 ![Animated screenshot of the game](screenshots/screenshot-3.gif)
 
+![Screenshot of the backoffice](screenshots/screenshot-4.jpg)
+
 
 ## Getting started
 
