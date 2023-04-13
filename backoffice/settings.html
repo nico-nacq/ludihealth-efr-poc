@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Saxonaute - Paramètrage
+    </title>
+    <style>
+        body {
+            font-family: Helvetica, Arial;
+            color: #0d0f34;
+            background-image: url('../app/assets/bg1.jpg');
+        }
+
+        h2 {
+            font-variant: small-caps;
+            color: whitesmoke;
+            text-align: center;
+        }
+
+        .parametres-container {
+            display: inline-block;
+
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exercice {
+            display: inline-block;
+            width: 270px;
+            margin-left: 2em;
+            padding: 7px;
+            margin-top: 2em;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            border: none;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+
+        }
+
+        .exercice input {
+            text-align: center;
+            padding: 10px;
+            border: none;
+            font-size: 18px;
+            width: calc(100% - 40px);
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .exercice img {
+            max-width: 250px;
+        }
+
+        button {
+            background-color: whitesmoke;
+            border-radius: 80px;
+
+            padding: 30px 60px;
+            font-size: 20px;
+            border: none;
+            margin-top: 2em;
+            display: block;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Paramètrage</h2>
+
+        <div class="parametres-container">
+
+            <div class="exercice">
+                <label for="max_inspiration_volume">Volume inspiré:</label>
+                <input type="number" value="130" id="max_inspiration_volume">
+            </div>
+
+            <div class="exercice">
+                <label for="frequence_moyenne">Fréquence:</label>
+                <input type="number" value="30" id="frequence_moyenne">
+            </div>
+
+            <div class="exercice">
+                <label for="max_expiration_duree">Durée maximale expiration:</label>
+                <input type="number" value="42" id="max_expiration_duree">
+            </div>
+
+            <div class="exercice">
+                <label for="min_expiration_duree">Durée minimale expiration:</label>
+                <input type="number" value="4" id="min_expiration_duree">
+            </div>
+
+            <div class="exercice">
+                <img src="img/lente_2_temps.png" alt="Expiration lente">
+                <label for="occurence_exercice_1">Nombre occurence:</label>
+                <input type="number" value="2" id="occurence_exercice_1">
+            </div>
+
+            <div class="exercice">
+                <img src="img/lente_2_temps.png" alt="Expiration rapide">
+                <label for="occurence_exercice_2">Nombre occurence</label>
+                <input type="number" value="3" id="occurence_exercice_2">
+            </div>
+
+            <div class="exercice">
+                <img src="img/lente_2_temps.png" alt="Expiration lente 4 temps">
+                <label for="occurence_exercice_3">Nombre occurence</label>
+                <input type="number" value="2" id="occurence_exercice_3">
+            </div>
+
+            <div class="exercice">
+                <img src="img/lente_2_temps.png" alt="Expiration rapide 4 temps">
+                <label for="occurence_exercice_4">Nombre occurence</label>
+                <input type="number" value="3" id="occurence_exercice_4">
+            </div>
+        </div>
+
+        <button onclick="save_settings()">Enregistrer</button>
+
+
+
+    </section>
+
+    <script>
+        let config_items = ["max_inspiration_volume", "frequence_moyenne", "max_expiration_duree",
+            "min_expiration_duree", "occurence_exercice_1", "occurence_exercice_2", "occurence_exercice_3",
+            "occurence_exercice_4"
+        ];
+
+        function load_settings() {
+            settings = localStorage.getItem("settings");
+            if (settings == null) { return }
+
+            config = JSON.parse(settings);
+            config_items.forEach(element => {
+                document.getElementById(element).value = config[element];
+            });
+        }
+
+        function save_settings() {
+            config = {};
+            config_items.forEach(element => {
+                config[element] = document.getElementById(element).value;
+            });
+            localStorage.setItem("settings", JSON.stringify(config))
+        }
+
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+                load_settings();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
