@@ -136,31 +136,34 @@ window.addEventListener('mousemove', mousemove);
 
 //GETTING DATA FROM SERVER
 
-let socket = new WebSocket("ws://" + websocket_server_address);
+try {
+    let socket = new WebSocket("ws://" + websocket_server_address);
 
-socket.onopen = function (e) {
-    socket.send("Hello");
-    document.getElementById("startGameBtn").classList.remove("waiting");
-};
+    socket.onopen = function (e) {
+        socket.send("Hello");
+        document.getElementById("startGameBtn").classList.remove("waiting");
+    };
 
-socket.addEventListener('message', function (event) {
-    rawData = event.data;
-});
+    socket.addEventListener('message', function (event) {
+        rawData = event.data;
+    });
 
-socket.onclose = function (event) {
-    socket = new WebSocket("ws://" + websocket_server_address);
-    if (event.wasClean) {
-        console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-    } else {
-        console.log('[close] Connection died');
-    }
-};
+    socket.onclose = function (event) {
+        socket = new WebSocket("ws://" + websocket_server_address);
+        if (event.wasClean) {
+            console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+        } else {
+            console.log('[close] Connection died');
+        }
+    };
 
-socket.onerror = function (error) {
-    console.log(`[error]`);
-};
+    socket.onerror = function (error) {
+        console.log(`[error]`);
+    };
 
+} catch (error) {
 
+}
 
 
 
